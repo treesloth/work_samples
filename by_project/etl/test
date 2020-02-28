@@ -1,0 +1,4 @@
+for line in $(cat mets); do
+    arrLINE=(${line//,/ })
+    echo ${arrLINE[0]} ${arrLINE[1]}
+done

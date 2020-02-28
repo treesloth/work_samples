@@ -1,0 +1,12 @@
+modes:
+    stickiness:
+        output_file: "stickiness"
+    overlaps:
+        output_file: "overlaps"
+    uncaught:
+        output_file: "uncaught"
+    host_aggregate:
+        output_file: "host_aggregate"
+input_files:
+    regex_file: "testreg"
+    alerts_file: "u_alerts_to_task.subset.csv"

@@ -1,0 +1,4 @@
+##  Add these to /etc/cron.d/reports
+
+1-59/2 * * * * root http_proxy= /root/scripts/financial_dashboard/financial_dash.py -m 2016/01/01-00:00:00 -p 180 -f eoqproj -r qtdreal
+*/2 * * * * root http_proxy= /root/scripts/financial_dashboard/financial_dash.py -m 2016/03/01-00:00:00 -p 60 -f eomproj -r mtdreal -a mtdmeter -b eommeter

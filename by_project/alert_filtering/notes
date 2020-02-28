@@ -1,0 +1,8 @@
+An attempt at a viable field separator for the horrific SNow CSV output:  ([^,]*)|("[^"]+")
+
+Need to add detection of unused regeces  -- DONE
+
+An ugly example line for testing an individual regex:
+$ grep "Fail to evaluate" uncaught | grep "MONITORING ERROR" | grep "Fail to evaluate" | awk 'BEGIN {while (getline < "testreg") {reg = $0}} $0 !~ reg {print}' | less
+
+

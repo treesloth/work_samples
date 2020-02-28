@@ -1,0 +1,68 @@
+<script type='text/javascript'>
+    $(function() {
+        Dashing.widget_margins = [5, 5]
+        Dashing.widget_base_dimensions = [130, 80]
+        Dashing.numColumns = 10
+    });
+</script>
+
+<div class="gridster">
+  <ul>
+
+<!-- Options are commented for sending to these widgets using financial_dash.py -->
+<!-- Full commands with sample dates: -->
+<!--
+    http_proxy= ./financial_dash.py -m 2016/01/01-00:00:00 -p 90 -f eoqproj -r qtdreal
+    http_proxy= ./financial_dash.py -m 2016/03/01-00:00:00 -p 30 -f eomproj -r mtdreal -a mtdmeter -b eommeter
+-->
+<!--
+    Or for testing...
+    while [ 1 ]; do http_proxy= ./financial_dash.py -m 2016/01/02-00:00:00 -p 90 -f eoqproj -r qtdreal; http_proxy= ./financial_dash.py -m 2016/01/02-00:00:00 -p 30 -f eomproj -r mtdreal -a mtdmeter -b eommeter; sleep 60; done
+-->
+
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="2">
+      <div data-id="pagelabel" data-view="Text" data-title="Month-to-Date Average Used (PiB)" style="background-color:#c0d891;"></div>
+    </li>
+    <li data-row="1" data-col="3" data-sizex="6" data-sizey="2">
+      <!-- Option:  -p 30 -r mtdreal -->
+      <div data-id="mtdreal" data-view="Multiseries" data-title="" min="0" style="background-color:#c0d891;"></div>
+    </li>
+    <li data-row="1" data-col="9" data-sizex="2" data-sizey="4">
+      <!-- Option:  -p 30 -a mtdmeter -->
+      <div data-id="mtdmeter" data-view="Meter" data-unordered="true" data-title="% of Goal" data-min="0" data-max="100" style="background-color:#c0d891;"></div>
+    </li>
+
+    <li data-row="3" data-col="1" data-sizex="2" data-sizey="2">
+      <div data-id="pagelabel" data-view="Text" data-title="Quarter-to-Date Average Used (PiB)" style="background-color:#dfebc8;"></div>
+    </li>
+    <li data-row="3" data-col="3" data-sizex="6" data-sizey="2">
+      <!-- Option:  -p 90 -r qtdreal -->
+      <div data-id="qtdreal" data-view="Multiseries" data-title="" style="background-color:#dfebc8;"></div>
+    </li>
+
+    <li data-row="5" data-col="1" data-sizex="2" data-sizey="2">
+      <div data-id="pagelabel" data-view="Text" data-title="End-of-Month Projection" style="background-color:#94d8d3;"></div>
+    </li>
+    <li data-row="5" data-col="3" data-sizex="6" data-sizey="2">
+      <!-- Option:  -p 30 -f eomproj -->
+      <div data-id="eomproj" data-view="Multiseries" data-title="End-of-Month" data-prefix="$" style="background-color:#94d8d3;"></div>
+    </li>
+    <li data-row="5" data-col="9" data-sizex="2" data-sizey="4">
+      <!-- Option:  -p 30 -b eommeter -->
+      <div data-id="eommeter" data-view="Meter" data-unordered="true" data-title="% of Goal" data-min="0" data-max="100" data-moreinfo="Calculated as a percentage of 399PiB"i style="background-color:#94d8d3;"></div>
+    </li>
+
+    <li data-row="7" data-col="1" data-sizex="2" data-sizey="2">
+      <div data-id="pagelabel" data-view="Text" data-title="End-of-Quarter Projection" style="background-color:#c9ebe9;"></div>
+    </li>
+    <li data-row="7" data-col="3" data-sizex="6" data-sizey="2">
+      <!-- Option:  -p 90 -f eoqproj -->
+      <div data-id="eoqproj" data-view="Multiseries" data-title="End-of-Quarter" data-prefix="$" style="background-color:#c9ebe9;"></div>
+    </li>
+
+    <li data-row="9" data-col="3" data-sizex="6" data-sizey="1">
+      <div data-id="caveats" data-view="Smtext" style="background-color:#c9ebe9;" ></div>
+    </li>
+
+  </ul>
+</div>

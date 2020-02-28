@@ -1,0 +1,162 @@
+workbook:
+    ##  Don't put an extension on your filename.
+    ##  The converter will automatically add .xlsx to whatever you put here.
+    wbname: "StorageSLA"
+worksheets:
+    -
+        name: "Storage"
+        file: "xlsx_ready"
+        columns:
+            -
+                source_column: 1
+                dest_column: 1
+                c_format: "General"
+            -
+                source_column: 2
+                dest_column: 2
+                c_format: "General"
+            -
+                source_column: 3
+                dest_column: 3
+                c_format: "General"
+            -
+                source_column: 4
+                dest_column: 4
+                c_format: "General"
+            -
+                source_column: 5
+                dest_column: 5
+                c_format: "0.000"
+            -
+                source_column: 6
+                dest_column: 6
+                c_format: "0.000"
+            -
+                source_column: 7
+                dest_column: 7
+                c_format: "0.000"
+            -
+                source_column: 8
+                dest_column: 8
+                c_format: "0.000"
+            -
+                source_column: 9
+                dest_column: 9
+                c_format: "0"
+            -
+                source_column: 10
+                dest_column: 10
+                c_format: "0"
+            -
+                source_column: 11
+                dest_column: 11
+                c_format: "0.00%"
+            -
+                source_column: 12
+                dest_column: 12
+                c_format: "0"
+            -
+                source_column: 13
+                dest_column: 13
+                c_format: "0"
+            -
+                source_column: 14
+                dest_column: 14
+                c_format: "0.00%"
+    -
+        name: "Summary"
+        contents:
+            ##  Column Headers
+            -
+                content: "Tier"
+                dest_row: 3
+                dest_column: 2
+            -
+                content: "SLA"
+                dest_row: 3
+                dest_column: 3
+            -
+                content: "SLA"
+                dest_row: 3
+                dest_column: 4
+            -
+                content: "NZ_SLA"
+                dest_row: 3
+                dest_column: 5
+            ##  Row labels
+            -
+                content: 0
+                dest_row: 4
+                dest_column: 2
+            -
+                content: 1
+                dest_row: 5
+                dest_column: 2
+            -
+                content: 2
+                dest_row: 6
+                dest_column: 2
+            -
+                content: 3
+                dest_row: 7
+                dest_column: 2
+        formulas:
+            ##  Tier Count column
+            -
+                formula: '=COUNTIF(Storage!B:B,"="&Summary!B4)'
+                dest_row: 4
+                dest_column: 3
+            -
+                formula: '=COUNTIF(Storage!B:B,"="&Summary!B5)'
+                dest_row: 5
+                dest_column: 3
+            -
+                formula: '=COUNTIF(Storage!B:B,"="&Summary!B6)'
+                dest_row: 6
+                dest_column: 3
+            -
+                formula: '=COUNTIF(Storage!B:B,"="&Summary!B7)'
+                dest_row: 7
+                dest_column: 3
+            ##  SLA column
+            -
+                formula: '=IF(C4 > 0, SUMIF(Storage!B:B,"="&Summary!B4,Storage!K:K)/C4, "N/A")'
+                dest_row: 4
+                dest_column: 4
+                c_format: "0.00%"
+            -
+                formula: '=IF(C5 > 0, SUMIF(Storage!B:B,"="&Summary!B5,Storage!K:K)/C5, "N/A")'
+                dest_row: 5
+                dest_column: 4
+                c_format: "0.00%"
+            -
+                formula: '=IF(C6 > 0, SUMIF(Storage!B:B,"="&Summary!B6,Storage!K:K)/C6, "N/A")'
+                dest_row: 6
+                dest_column: 4
+                c_format: "0.00%"
+            -
+                formula: '=IF(C7 > 0, SUMIF(Storage!B:B,"="&Summary!B7,Storage!K:K)/C7, "N/A")'
+                dest_row: 7
+                dest_column: 4
+                c_format: "0.00%"
+            ##  NZ_SLA Column
+            -
+                formula: '=IF(C4 > 0, SUMIF(Storage!B:B,"="&Summary!B4,Storage!N:N)/C4, "N/A")'
+                dest_row: 4
+                dest_column: 5
+                c_format: "0.00%"
+            -
+                formula: '=IF(C5 > 0, SUMIF(Storage!B:B,"="&Summary!B5,Storage!N:N)/C5, "N/A")'
+                dest_row: 5
+                dest_column: 5
+                c_format: "0.00%"
+            -
+                formula: '=IF(C6 > 0, SUMIF(Storage!B:B,"="&Summary!B6,Storage!N:N)/C6, "N/A")'
+                dest_row: 6
+                dest_column: 5
+                c_format: "0.00%"
+            -
+                formula: '=IF(C7 > 0, SUMIF(Storage!B:B,"="&Summary!B7,Storage!N:N)/C7, "N/A")'
+                dest_row: 7
+                dest_column: 5
+                c_format: "0.00%"

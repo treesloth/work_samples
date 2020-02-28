@@ -1,0 +1,23 @@
+This repo pulls data from a TSD using the tsdb script's scan capability, 
+reduces the tags to a minimal tag/value set, compresses the resulting set, and 
+pushes to a server that temporarily hosts the compressed files.
+
+As initially configured, this repository is placed in:
+    root@<jumpbox>:<full_directory_path>
+
+It pulls time series data from the server ma-tsd01 via ssh using the script:
+    ma-tsd01:/usr/share/opentsdb/bin/tsdb
+
+For example, the to query for vnx_available data, the script runner.sh in this 
+repo sends this command to ma-tsd01:
+    /usr/share/opentsdb/bin/tsdb scan --import 15m-ago avg vnx_available
+
+The data is received back to the runner.sh script via SSH and piped to the 
+script tagset.py, which reduces the dataset to the minimum set of tags and 
+values.  Once reduced, the data is compressed with the standard gzip utility 
+and SCP'd to;
+    root@<storage_box>:<full_path_to_storage_directory>
+
+Once there, it remains until the Grafana server (which also happens to be the 
+feeder to the OpenTSDB service) pulls the files via rsync, deletes the 
+source files, and sends the data to OpenTSDB.
